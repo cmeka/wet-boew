@@ -1085,7 +1085,6 @@ module.exports = (grunt) ->
 					src: [
 						"MathJax.js"
 						"config/**"
-						"docs/**"
 						"extensions/**"
 						"jax/**"
 						"localization/**"
