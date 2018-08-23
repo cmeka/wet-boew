@@ -251,9 +251,6 @@ var componentName = "wb-lbx",
 		// Load Magnific Popup dependency and bind the init event handler
 		Modernizr.load( {
 			load: "site!deps/jquery.magnific-popup" + wb.getMode() + ".js",
-			testReady: function() {
-				return $.magnificPopup;
-			},
 			complete: function() {
 
 				// Set the dependency i18nText only once
