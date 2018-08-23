@@ -72,7 +72,7 @@ var componentName = "wb-frmvld",
 					"site!deps/additional-methods" + modeJS
 				],
 				testReady: function() {
-					return ( $.validator && $.validator.methods.bic );
+					return ( window.fromValid && window.fromValid.additional );
 				},
 				complete: function() {
 					var $elm = $( "#" + elmId ),
