@@ -4,7 +4,6 @@ options:
 rules:
   class-name-format: 0
   function-name-format: 0
-  final-newline: 2
   id-name-format: 0
   indentation:
     - 2
