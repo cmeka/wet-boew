@@ -421,16 +421,7 @@ var componentName = "wb-menu",
 				.attr( {
 					"aria-hidden": "true",
 					"aria-expanded": "false"
-				} )
-
-				// Close nested submenus
-				.find( "details" )
-					.removeAttr( "open" )
-					.children( "ul" )
-						.attr( {
-							"aria-hidden": "true",
-							"aria-expanded": "false"
-						} );
+				} );
 
 		if ( removeActive ) {
 			$elm.removeClass( "active" );
