@@ -156,7 +156,6 @@ wb.i18nDict = {
 	/* Charts widget */
 	"tbl-txt": "@tbl-txt@",
 	"tbl-dtls": "@tbl-dtls@",
-	"chrt-cmbslc": "@chrt-cmbslc@",
 
 	/* Session timeout */
 	"st-to-msg-bgn": "@st-to-msg-bgn@",
