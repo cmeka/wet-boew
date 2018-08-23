@@ -601,10 +601,6 @@ module.exports = (grunt) ->
 
 		# Compiles the Sass files
 		sass:
-			options:
-				includePaths: [
-					"node_modules"
-				]
 			all:
 				files: [
 					expand: true
