@@ -1457,16 +1457,6 @@ module.exports = (grunt) ->
 				]
 				expand: true
 
-		markdownlint:
-			all:
-				options:
-					config: grunt.file.readJSON(".markdownlint.json")
-				src: [
-					'**/*.md'
-					'!node_modules/**/*.md'
-					'!lib/**/*.md'
-				]
-
 	require( "load-grunt-tasks" )( grunt, requireResolution: true )
 
 	require( "time-grunt" )( grunt )
