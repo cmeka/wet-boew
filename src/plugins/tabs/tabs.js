@@ -385,6 +385,8 @@ var componentName = "wb-tabs",
 			isDetails = $panels[ 0 ].nodeName.toLowerCase() === "details",
 			isActive, item, link, panelId, activeFound;
 
+		$panels.attr( "tabindex", "-1" );
+
 		for ( ; tabCounter !== -1; tabCounter -= 1 ) {
 			item = panels[ tabCounter ];
 			isActive = item.className.indexOf( "out" ) === -1;
