@@ -641,36 +641,26 @@ $document.on( "keydown", selector + " [role=menuitem]", function( event ) {
 		$menuLink, $parentMenu, $parent, $subMenu, result,
 		menuitemSelector, isOpen, menuItemOffsetTop, menuContainer;
 
-	// Define keycodes. (Make const when WET supports ES6)
-	var TAB_KC = 9,
-		ENTER_KC = 13,
-		ESC_KC = 27,
-		LEFT_KC = 37,
-		UP_KC = 38,
-		RIGHT_KC = 39,
-		DOWN_KC = 40,
-		SPACE_KC = 32;
-
 	if ( !( event.ctrlKey || event.altKey || event.metaKey ) ) {
 
 		// Tab key = Hide all sub-menus
-		if ( which === TAB_KC ) {
+		if ( which === 9 ) {
 			menuClose( $( selector + " .active" ), true );
 
 		// Menu item is within a menu bar
 		} else if ( inMenuBar ) {
 
 			// Left / right arrow = Previous / next menu item
-			if ( which === LEFT_KC || which === RIGHT_KC ) {
+			if ( which === 37 || which === 39 ) {
 				event.preventDefault();
 				menuIncrement(
 					$menu.find( "> li > a" ),
 					$menuItem,
-					which === LEFT_KC ? -1 : 1
+					which === 37 ? -1 : 1
 				);
 
 			// Enter sub-menu
-			} else if ( hasPopup && ( which === ENTER_KC || which === UP_KC || which === DOWN_KC ) ) {
+			} else if ( hasPopup && ( which === 13 || which === 38 || which === 40 ) ) {
 				event.preventDefault();
 				$parent = $menuItem.parent();
 				$subMenu = $parent.find( ".sm" );
@@ -684,7 +674,7 @@ $document.on( "keydown", selector + " [role=menuitem]", function( event ) {
 				$subMenu.children( "li" ).eq( 0 ).find( menuItemSelector ).trigger( focusEvent );
 
 			// Hide sub-menus and set focus
-			} else if ( which === ESC_KC ) {
+			} else if ( which === 27 ) {
 				event.preventDefault();
 				menuClose( $menu.closest( selector ).find( ".active" ), false );
 
@@ -702,19 +692,19 @@ $document.on( "keydown", selector + " [role=menuitem]", function( event ) {
 			menuitemSelector = menuItemSelector;
 
 			// Up / down arrow = Previous / next menu item
-			if ( which === UP_KC || which === DOWN_KC ) {
+			if ( which === 38 || which === 40 ) {
 				event.preventDefault();
 				menuIncrement(
 					$menu.children( "li" ).find( menuitemSelector ),
 					$menuItem,
-					which === UP_KC ? -1 : 1
+					which === 38 ? -1 : 1
 				);
 
 			// Enter or right arrow with a submenu
-			} else if ( hasPopup && ( which === ENTER_KC || which === RIGHT_KC ) ) {
+			} else if ( hasPopup && ( which === 13 || which === 39 ) ) {
 				$parent = $menuItem.parent();
 
-				if ( which === RIGHT_KC ) {
+				if ( which === 39 ) {
 					event.preventDefault();
 				}
 
@@ -743,7 +733,7 @@ $document.on( "keydown", selector + " [role=menuitem]", function( event ) {
 					}
 
 					// Ensure the menu is opened or stays open
-					if ( ( !isOpen && which === RIGHT_KC ) || ( isOpen && which === ENTER_KC ) ) {
+					if ( ( !isOpen && which === 39 ) || ( isOpen && which === 13 ) ) {
 						$menuItem.trigger( "click" );
 					}
 
@@ -759,10 +749,10 @@ $document.on( "keydown", selector + " [role=menuitem]", function( event ) {
 				}
 
 			// Escape, left / right arrow without a submenu
-			} else if ( which === ESC_KC || which === LEFT_KC || which === RIGHT_KC ) {
+			} else if ( which === 27 || which === 37 || which === 39 ) {
 				$parent = $menu.parent();
 				$parentMenu = $parent.closest( "[role^='menu']" );
-				if ( which === LEFT_KC || which === RIGHT_KC ) {
+				if ( which === 37 || which === 39 ) {
 					event.preventDefault();
 				}
 
@@ -771,7 +761,7 @@ $document.on( "keydown", selector + " [role=menuitem]", function( event ) {
 					$menuLink = $menu.siblings( "a" );
 
 					// Escape key = Close menu and return to menu bar item
-					if ( which === ESC_KC ) {
+					if ( which === 27 ) {
 						event.preventDefault();
 						$menuLink.trigger( focusEvent );
 
@@ -785,13 +775,13 @@ $document.on( "keydown", selector + " [role=menuitem]", function( event ) {
 						menuIncrement(
 							$parentMenu.find( "> li > a" ),
 							$menuLink,
-							which === LEFT_KC ? -1 : 1
+							which === 37 ? -1 : 1
 						);
 					}
 
 				// Escape or left arrow: Go up a level if there is a higher-level
 				// menu or close the current submenu if there isn't
-				} else if ( which !== RIGHT_KC ) {
+				} else if ( which !== 39 ) {
 					$subMenu = $parentMenu.length !== 0 ? $menu : $menuItem;
 
 					// There is a higher-level menu
