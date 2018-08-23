@@ -1,11 +1,10 @@
-/*skip-links*/
 .wb-sl {
-	background-color: $wb-sl-background-color;
-	color: $wb-sl-color;
+	background-color: #000;
+	color: #fff;
 	font-weight: 700;
 
 	&:focus {
-		color: $wb-sl-focus;
+		color: #fff;
 		text-decoration: none;
 	}
 }
