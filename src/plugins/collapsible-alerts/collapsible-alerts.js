@@ -65,45 +65,49 @@ var componentName = "wb-collapsible",
 // Bind the init event of the plugin
 $document.on( "timerpoke.wb " + initEvent, selector, init );
 
-// Do not bind events if details polyfill is active
-if ( Modernizr.details ) {
+$document.on( "timerpoke.wb", function() {
 
-	// Bind the the event handlers of the plugin
-	$document.on( "click keydown toggle." + componentName, selector + " summary", function( event ) {
-		var which = event.which,
-			currentTarget = event.currentTarget,
-			isClosed;
+	// Do not bind events if details polyfill is active
+	if ( Modernizr.details ) {
 
-		// Ignore middle/right mouse buttons and wb-toggle enhanced summary elements (except for toggle)
-		if ( ( !which || which === 1 ) &&
-			( currentTarget.className.indexOf( "wb-toggle" ) === -1 ||
-			( event.type === "toggle" && event.namespace === componentName ) ) ) {
+		// Bind the the event handlers of the plugin
+		$document.on( "click keydown toggle." + componentName, selector + " summary", function( event ) {
+			var which = event.which,
+				currentTarget = event.currentTarget,
+				isClosed;
 
-			details = currentTarget.parentNode;
-			isClosed = details.getAttribute( "open" ) === null;
-			key = "alert-collapsible-state-" + details.getAttribute( "id" );
+			// Ignore middle/right mouse buttons and wb-toggle enhanced summary elements (except for toggle)
+			if ( ( !which || which === 1 ) &&
+				( currentTarget.className.indexOf( "wb-toggle" ) === -1 ||
+				( event.type === "toggle" && event.namespace === componentName ) ) ) {
 
-			if ( isClosed ) {
-				try {
-					localStorage.setItem( key, "open" );
-				} catch ( e ) {}
-			} else {
-				try {
-					localStorage.setItem( key, "closed" );
-				} catch ( e ) {}
+				details = currentTarget.parentNode;
+				isClosed = details.getAttribute( "open" ) === null;
+				key = "alert-collapsible-state-" + details.getAttribute( "id" );
+
+				if ( isClosed ) {
+					try {
+						localStorage.setItem( key, "open" );
+					} catch ( e ) {}
+				} else {
+					try {
+						localStorage.setItem( key, "closed" );
+					} catch ( e ) {}
+				}
+			} else if ( which === 13 || which === 32 ) {
+				event.preventDefault();
+				$( currentTarget ).trigger( "click" );
 			}
-		} else if ( which === 13 || which === 32 ) {
-			event.preventDefault();
-			$( currentTarget ).trigger( "click" );
-		}
 
-		/*
-		 * Since we are working with events we want to ensure that we are being passive about our control,
-		 * so returning true allows for events to always continue
-		 */
-		return true;
-	} );
-}
+			/*
+			 * Since we are working with events we want to ensure that we are being passive about our control,
+			 * so returning true allows for events to always continue
+			 */
+			return true;
+		} );
+	}
+
+} );
 
 // Add the timer poke to initialize the plugin
 wb.add( selector );
