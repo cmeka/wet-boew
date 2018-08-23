@@ -701,7 +701,7 @@ $document.on( "keydown", selector + " [role=menuitem]", function( event ) {
 				event.preventDefault();
 				selectByLetter(
 					which,
-					$menuItem.parent().find( "> ul > li > a, > ul > li > details > summary" ).get()
+					$menuItem.parent().find( "> ul > li > a" ).get()
 				);
 			}
 
