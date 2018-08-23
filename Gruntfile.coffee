@@ -343,7 +343,7 @@ module.exports = (grunt) ->
 					npmInstall: false
 
 		clean:
-			dist: ["dist"]
+			dist: ["dist", "src/base/partials/*sprites*"]
 
 		# Task configuration.
 		wget:
