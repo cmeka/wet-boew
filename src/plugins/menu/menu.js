@@ -438,14 +438,12 @@ var componentName = "wb-menu",
 
 		menuClose( $elm.find( ".active" ), true );
 
-		menu.addClass( "active" );
-
 		// Ignore if doesn't have a submenu
 		if ( menuLink.attr( "aria-haspopup" ) === "true" ) {
 
 			// Add the open state classes
 			menu
-				.addClass( "sm-open" )
+				.addClass( "active sm-open" )
 				.children( ".sm" )
 					.addClass( "open" )
 					.attr( {
